@@ -1,0 +1,8 @@
+<tr>
+  <td><%= import.id %></td>
+  <td><%= truncate import.description, length: 25 %></td>
+  <td><% total = 0; import.import_products.each { |p| total += p.product_unit } %>
+  <%= total %></td>
+  <td><%= number_to_currency import.total, unit: "$" %></td>
+  <td><%= link_to "Detail", [:admin, import] %></td>
+</tr>

@@ -1,0 +1,22 @@
+<div class="form-wrapper import-products">
+  <h2>Import's Detail</h2>
+
+  <p><label class="label label-info">Description</label>
+  <%= @import.description %></p>
+  <ul class="list-group">
+    <% @import.import_products.each do |import_product| %>
+      <% product = import_product.product %>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading">Item</h4>
+        <div class="list-group-item-text">
+          <span><label class="label label-info">Product Name</label>
+          <%= product.name %></span>
+          <span><label class="label label-info">Product Unit</label>
+          <%= import_product.product_unit %></span>
+          <span><label class="label label-info">Import Unit Price</label>
+          <%= number_to_currency import_product.unit_price, unit: "$" %></span>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

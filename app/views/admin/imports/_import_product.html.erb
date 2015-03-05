@@ -1,0 +1,16 @@
+<div class="form-group">
+  <%= f.label :product_unit %>
+  <%= f.text_field :product_unit, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :unit_price %>
+  <%= f.text_field :unit_price, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :product %> or 
+  <span><%= link_to "New Product", new_admin_product_path %></span>
+  <%= f.collection_select :product_id, Product.all,
+      :id, :name, {}, { class: "form-control" } %>
+</div>

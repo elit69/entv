@@ -1,0 +1,15 @@
+<div class="form-wrapper">
+  <h2>Import's Histories</h2><br />
+
+  <table class="table table-condensed table-bordered">
+    <tr>
+      <th>#</th>
+      <th>Description</th>
+      <th>Total Product</th>
+      <th>Total Amount</th>
+      <th>More</th>
+    </tr>
+    <%= render @imports %>
+  </table>
+  <p><%= link_to "New Import", new_admin_import_path %></p>
+</div>

@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+5.times do |i|
+  category = Category.create name: "Category #{i+1}", description: "Description #{i+1}"
+  3.times do |n|
+    Product.find_or_create_by(name: "Product #{n+1}") do |product|
+      product.category = category
+      product.price = 10
+    end
+  end
+end

@@ -1,0 +1,15 @@
+<div class="form-wrapper">
+  <h2>Products List</h2><br />
+
+  <table class="table table-condensed table-bordered">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Stock</th>
+      <th>More</th>
+    </tr>
+    <%= render @products %>
+  </table>
+  <p><%= link_to "New Product", new_admin_product_path %></p>
+</div>

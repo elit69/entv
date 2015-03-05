@@ -1,0 +1,7 @@
+<% unless errors.blank? %>
+  <ol class="error_messages alert alert-danger">
+    <% errors.full_messages.each_with_index do |error, index| %>
+      <li><%= "#{index+1}. #{error}" %></li>
+    <% end %>
+  </ol>
+<% end %>

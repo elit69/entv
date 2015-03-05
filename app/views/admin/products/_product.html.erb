@@ -1,0 +1,11 @@
+<tr>
+  <td><%= product.id %></td>
+  <td><%= truncate product.name, length: 25 %></td>
+  <td><%= number_to_currency product.total, unit: "$" %></td>
+  <td><%= product.total %></td>
+  <td class="breadcrumb">
+    <li><%= link_to "Detail", [:admin, product] %></li>
+    <li><%= link_to "Edit", edit_admin_product_path(product) %></li>
+    <li><%= link_to "Remove", [:admin, product], data: { method: :delete, confirm: "Do you want to remove this product" } %></li>
+  </td>
+</tr>

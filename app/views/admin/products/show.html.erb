@@ -1,0 +1,25 @@
+<div class="form-wrapper product">
+  <div>
+    <h2>Product</h2>
+
+    <p><label>Name: </label><%= @product.name %></p>
+    <p><label>Price: </label><%= number_to_currency @product.price %></p>
+    <p><label>Company: </label><%= @product.company ? @product.company : "NA" %></p>
+    <p><label>Available in stock: </label><%= @product.total %></p>
+    <p>
+      <label>Spec: </label>
+      <% if @product.spec %>
+        <% spec = @product.spec %>
+        <label>CPU: </label><%= spec.cpu ? spec.cpu : "NA" %>, 
+        <label>RAM: </label><%= spec.ram ? spec.ram : "NA" %>, 
+        <label>VGA: </label><%= spec.vga ? spec.vga : "NA" %></p>, 
+        <label>Operating System:</label><%= spec.os ? spec.os : "NA" %>, 
+        <label>Storage: </label><%= spec.storage ? spec.storage : "NA" %>, 
+        <label>Screen: </label><%= spec.screen_size ? spec.screen_size : "NA" %>, 
+        <label>Battery; </label><%= spec.battery ? spec.battery : "NA" %>
+      <% else %>
+        Not available
+      <% end %>
+    </p>
+  </div>
+</div>

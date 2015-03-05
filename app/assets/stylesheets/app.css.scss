@@ -52,7 +52,7 @@ body {
 .form-wrapper h2 {
     text-align: center;
     padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #eee;
 }
 
 .alert-alert {
@@ -61,4 +61,29 @@ body {
 
 .alert-notice {
     @extend .alert-success;
+}
+
+.table {
+    tr:hover {
+        @extend .active;
+    }
+}
+
+.import-products {
+    p {
+        padding: 15px;
+        label {
+            margin-right: 2px;
+        }
+    }
+    div span {
+        margin-right: 15px;
+        label {
+            margin-right: 2px;
+        }
+    }
+}
+
+.error_messages {
+    list-style: none;
 }
