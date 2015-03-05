@@ -7,8 +7,77 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <div id="header" class="row">
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" src="#" />
+          </a>
+        </div>
 
-<%= yield %>
+        <form class="navbar-form pull-left" role="search" method="get" action="#">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search" />
+          </div>
+          <div class="form-group">
+            <select class="form-control">
+              <option value="select" selected="selected">-- Select --</option>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select>
+          </div>
+            <input class="btn btn-default" type="submit" value="Search" />
+        </form>
 
+        <ul class="nav navbar-nav pull-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "Hi, #{current_user.username}", profile_path %></li>
+            <li><%= link_to "Sign Out", sign_out_path %></li>
+          <% else %>
+            <li><%= link_to "Sign In", sign_in_path %></li>
+            <li><%= link_to "Sign Up", sign_up_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+    <div class="row" id="content">
+      <div class="col-sm-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Category 1</h3>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item"><a href="#">Item 1</a></li>
+            <li class="list-group-item"><a href="#">Item 2</a></li>
+            <li class="list-group-item"><a href="#">Item 3</a></li>
+          </ul>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Category 2</h3>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item"><a href="#">Item 1</a></li>
+            <li class="list-group-item"><a href="#">Item 2</a></li>
+            <li class="list-group-item"><a href="#">Item 3</a></li>
+          </ul>
+        </div>
+        </div>
+        <div class="col-sm-10">
+          <% flash.each do |key, value| %>
+            <%= content_tag :div, value, class: "alert alert-#{key}" %>
+          <% end %>
+          <%= yield %>
+        </div>
+    </div>
+    <div class="row" id="footer">
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>
