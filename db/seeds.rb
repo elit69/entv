@@ -6,12 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-5.times do |i|
-  category = Category.create name: "Category #{i+1}", description: "Description #{i+1}"
-  3.times do |n|
-    Product.find_or_create_by(name: "Product #{n+1}") do |product|
-      product.category = category
-      product.price = 10
-    end
-  end
-end
+Category.create!([
+  {
+    name: "Smart Phone",
+    description: "latest generation of phone that are smart lol"
+  },
+  {
+    name: "Headset",
+    description: "used for listening"
+  }
+])
+
+cate = Category.find(1)
+cate.products.create!(name: "IPhone6", company: "Apple", price: 1000, total: 200)
+
+cate = Category.find(2)
+cate.products.create!(name: "Beat Headset",	company: "Beat Audio",	price: 150,	total: 20)
+cate.products.create!(name: "Beat Headset big",	company: "Beat Audio",	price: 200,	total: 60)

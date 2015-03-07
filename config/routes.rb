@@ -1,5 +1,6 @@
 Entv::Application.routes.draw do
   root "static#index"
+  resources :products
   get "about" => "static#about", as: :about
   get "contact" => "static#contact", as: :contact
 
@@ -14,8 +15,8 @@ Entv::Application.routes.draw do
 
   namespace :admin do
     root "products#index"
-    resources :products
     resources :categories, except: [:show, :destroy]
+    resources :products
     resources :imports, except: [:edit, :update, :destroy]
   end
 end
