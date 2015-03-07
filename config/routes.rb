@@ -13,10 +13,17 @@ Entv::Application.routes.draw do
     get "reset_password" => "devise/passwords#new", as: :reset_password
   end
 
+  devise_for :admins
+  devise_scope :admins do
+    get "admins/sign_in" => "devise/sessions#new", as: :admin_sign_in
+    get "admins/sign_out" => "devise/sessions#destroy", as: :admin_sign_out
+  end
+  
   namespace :admin do
     root "products#index"
-    resources :categories, except: [:show, :destroy]
+    
     resources :products
+    resources :categories, except: [:show, :destroy]
     resources :imports, except: [:edit, :update, :destroy]
   end
 end

@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up).concat [:username, :phone_number, :address]
       devise_parameter_sanitizer.for(:account_update).concat [:username, :phone_number, :address]
     end
+    
+    def admin_controller
+      devise_controller? && resource_name == :admins
+    end
 end
