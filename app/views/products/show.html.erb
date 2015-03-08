@@ -1,0 +1,19 @@
+<h1><%= @product.name %></h1>
+<h3>Price</h3>
+<p><%= @product.price %></p>
+<h3>Quantity</h3>
+<p><%= @product.total %></p>
+<h3>Category</h3>
+<p><%= @product.category.name %></p>
+<h3>Company</h3>
+<p><%= @product.company %></p>
+<%if @s != nil %>
+  <h3>Detail</h3>
+  <p>Screen Size: <%= @s.screen_size %></p>
+  <p>OS: <%= @s.os %></p>
+  <p>CPU: <%= @s.cpu %></p>
+  <p>RAM: <%= @s.ram %></p>
+  <p>VGA: <%= @s.vga %></p>  
+  <p>Storage: <%= @s.storage %></p>  
+  <p>Battery: <%= @s.battery %></p>
+<%end%>
