@@ -9,7 +9,7 @@
         <ul class="list-group">
           <% c.products.group(:company).each do |c0| %>
             <li class="list-group-item">
-              <%= link_to(c0.company, product_path(c0))  %>
+              <%= link_to(c0.company, products_path(company: c0.company))  %>
             </li>
           <% end %>
         </ul>
