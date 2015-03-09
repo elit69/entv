@@ -56,9 +56,19 @@ body {
     }
 }
 
+#admin-sidebar li {
+    border-bottom: 1px solid #E7E7E7;
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
 .form-wrapper h2 {
     text-align: center;
+    margin-top: 0;
+    padding-top: 15px;
     padding-bottom: 15px;
+    border-top: 2px solid #eee;
     border-bottom: 2px solid #eee;
 }
 
@@ -99,6 +109,9 @@ body {
     width: 50%;
     margin: 0;
     padding: 0;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
     option {
         margin: 0;
         padding: 0;

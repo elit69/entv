@@ -9,67 +9,11 @@
 <body>
   <div class="container">
     <div id="header" class="row">
-      <nav class="navbar navbar-default navbar-static-top">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-            <img alt="Brand" src="#" />
-          </a>
-        </div>
-
-        <form class="navbar-form pull-left" role="search" method="get" action="#">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" />
-          </div>
-          <div class="form-group">
-            <select class="form-control">
-              <option value="select" selected="selected">-- Select --</option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </select>
-          </div>
-            <input class="btn btn-default" type="submit" value="Search" />
-        </form>
-
-        <ul class="nav navbar-nav pull-right">
-          <% if user_signed_in? %>
-            <li><%= link_to "Hi, #{current_user.username}", profile_path %></li>
-            <li><%= link_to "Sign Out", sign_out_path %></li>
-          <% elsif admin_signed_in? %>
-            <li><%= link_to "Admin, #{current_admin.username}", "" %></li>
-            <li><%= link_to "Sign Out", admin_sign_out_path, data: { method: :delete } %></li>
-          <% else %>
-            <li><%= link_to "Sign In", sign_in_path %></li>
-            <li><%= link_to "Sign Up", sign_up_path %></li>
-            <li><%= link_to "Admin?", admin_sign_in_path %></li>
-          <% end %>
-        </ul>
-      </nav>
+      <%= render "layouts/navbar" %>
     </div>
     <div class="row" id="content">
-      <div class="col-sm-2">
-        <div class="panel panel-default">
-          <% @categories ||= Category.all %>
-          <% @categories.each do |c| %>
-              <div class="panel-heading">
-              <h3 class="panel-title"><%= c.name %></h3>    
-            </div>
-            <ul class="list-group">
-              <% c.products.group(:company).each do |c0| %>
-                  <li class="list-group-item">
-                    <%= link_to(c0.company, product_path(c0))  %>
-                  </li>
-              <% end %>
-            </ul>   
-          <% end %>
-        </div>
-      </div>
-        <div class="col-sm-10">
-          <% flash.each do |key, value| %>
-            <%= content_tag :div, value, class: "alert alert-#{key}" %>
-          <% end %>
-          <%= yield %>
-        </div>
+      <%= render "layouts/sidebar" %>
+      <%= render "layouts/content" %>
     </div>
     <div class="row" id="footer">
       <ul>

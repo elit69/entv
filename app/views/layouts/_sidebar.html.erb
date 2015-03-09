@@ -1,0 +1,29 @@
+<div class="col-sm-2">
+  <% unless admin_signed_in? %>
+    <div class="panel panel-default">
+      <% @categories ||= Category.all %>
+      <% @categories.each do |c| %>
+        <div class="panel-heading">
+        <h3 class="panel-title"><%= c.name %></h3>
+        </div>
+        <ul class="list-group">
+          <% c.products.group(:company).each do |c0| %>
+            <li class="list-group-item">
+              <%= link_to(c0.company, product_path(c0))  %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="panel panel-default">
+      <ul id="admin-sidebar" class="nav nav-pills nav-stacked">
+        <li><%= link_to "Category", admin_categories_path %></li>
+        <li><%= link_to "Customer", admin_users_path %></li>
+        <li><%= link_to "Import", admin_imports_path %></li>
+        <li><%= link_to "Order", admin_orders_path %></li>
+        <li><%= link_to "Product", admin_products_path %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>
