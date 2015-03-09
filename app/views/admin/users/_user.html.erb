@@ -1,0 +1,10 @@
+<tr>
+  <td><%= user.id %></td>
+  <td><%= user.username %></td>
+  <td><%= user.email %></td>
+  <td><%= user.address ? user.address : "NA" %></td>
+  <td><%= user.phone_number ? user.phone_number : "NA" %></td>
+  <td><%= user.member_since %></td>
+  <td><%= link_to "Remove", admin_user_path(user),
+  data: { method: :delete, confirm: "Are you sure you want to do this?" } %></td>
+</tr>

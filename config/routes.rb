@@ -23,6 +23,8 @@ Entv::Application.routes.draw do
     root "products#index"
     
     resources :products
+    resources :orders, only: [:index, :show, :update]
+    resources :users, only: [:index, :destroy]
     resources :categories, except: [:show, :destroy]
     resources :imports, except: [:edit, :update, :destroy]
   end

@@ -49,6 +49,13 @@ body {
     text-decoration: none;
 }
 
+#order div {
+    label {
+        margin-left: 15px;
+        margin-right: 20px;
+    }
+}
+
 .form-wrapper h2 {
     text-align: center;
     padding-bottom: 15px;
@@ -86,4 +93,15 @@ body {
 
 .error_messages {
     list-style: none;
+}
+
+.select {
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    option {
+        margin: 0;
+        padding: 0;
+        width: 50%;
+    }
 }

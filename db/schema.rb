@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307095543) do
+ActiveRecord::Schema.define(version: 20150309091905) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20150307095543) do
     t.string   "status",        default: "Pending"
     t.string   "order_address"
     t.string   "order_type"
-    t.decimal  "total"
+    t.decimal  "total",         default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

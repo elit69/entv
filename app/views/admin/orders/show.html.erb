@@ -1,0 +1,22 @@
+<div class="form-wrapper" id="order">
+  <h2>Order Details</h2>
+  <div><label>Address</label><span>asdasd</span></div>
+  <div><label>Contact</label><span><%= @order.user.phone_number %></span></div>
+  <h4 style="text-align: center;">Order Items</h4>
+  <table class="table table-condensed table-bordered">
+    <tr>
+      <th>Product</th>
+      <th>Unit</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+    <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.product.name %></td>
+        <td><%= order_item.product_unit %></td>
+        <td><%= number_to_currency order_item.price %></td>
+        <td><%= number_to_currency order_item.product_unit * order_item.price, unit: "$" %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
