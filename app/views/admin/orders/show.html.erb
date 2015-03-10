@@ -12,7 +12,8 @@
     </tr>
     <% @order.order_items.each do |order_item| %>
       <tr>
-        <td><%= order_item.product.name %></td>
+        <% product = order_item.product %>
+        <td><%= product ? product.name : "No longer sell." %></td>
         <td><%= order_item.product_unit %></td>
         <td><%= number_to_currency order_item.price %></td>
         <td><%= number_to_currency order_item.product_unit * order_item.price, unit: "$" %></td>

@@ -63,6 +63,17 @@ body {
     }
 }
 
+.product {
+    img {
+        float: right;
+        padding: 2px;
+        cursor: pointer;
+        border-radius: 3px;
+        border: 1px solid #E7E7E7;
+        box-shadow: 0 1px 1px #ccc;
+    }
+}
+
 .form-wrapper h2 {
     text-align: center;
     margin-top: 0;

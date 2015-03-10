@@ -7,7 +7,7 @@
         <h3 class="panel-title"><%= c.name %></h3>
         </div>
         <ul class="list-group">
-          <% c.products.group(:company).each do |c0| %>
+          <% c.products.select("DISTINCT company").each do |c0| %>
             <li class="list-group-item">
               <%= link_to(c0.company, product_path(c0))  %>
             </li>

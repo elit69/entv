@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration
       t.string :status, default: "Pending"
       t.string :order_address
       t.string :order_type
-      t.decimal :total
+      t.decimal :total, default: 0
 
       t.timestamps
     end
