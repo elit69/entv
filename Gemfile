@@ -12,6 +12,13 @@ gem 'bootstrap-sass', '>= 3.3.3'
 # Paginate with bootstrap
 gem 'will_paginate', '>= 3.0.6'
 
+# Carrierwave file upload
+# to install rmagick gem first
+# run sudo apt-get install imagemagick libmagickwand5 libmagickwand-dev
+# before bundle install
+gem 'rmagick'
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

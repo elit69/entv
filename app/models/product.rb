@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   has_many :imports, through: :import_products, source: :import
 
   accepts_nested_attributes_for :spec
+  mount_uploader :picture, PictureUploader
 
   validates_associated :category
   validates_presence_of :name

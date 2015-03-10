@@ -47,8 +47,8 @@ class Admin::ProductsController < ApplicationController
   private
 
     def product_params
-      params.require(:product).permit(:category_id, :name, :company, :price,
-        spec_attributes: [:cpu, :ram, :os, :storage, :screen_size, :vga, :battery])
+      params.require(:product).permit(:category_id, :name, :company, :price, :picture,
+        :remote_picture_url, spec_attributes: [:cpu, :ram, :os, :storage, :screen_size, :vga, :battery])
     end
 
     def set_product

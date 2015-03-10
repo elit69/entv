@@ -10,7 +10,7 @@
         <h4 class="list-group-item-heading">Item</h4>
         <div class="list-group-item-text">
           <span><label class="label label-info">Product Name</label>
-          <%= product.name %></span>
+          <%= product ? product.name : "No longer imported." %></span>
           <span><label class="label label-info">Product Unit</label>
           <%= import_product.product_unit %></span>
           <span><label class="label label-info">Import Unit Price</label>
