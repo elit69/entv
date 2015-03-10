@@ -6,5 +6,6 @@ class ProductsController < ApplicationController
     @categories = Category.all
     @product = Product.find(params[:id])
     @s = Spec.find_by(product: @product)
+    session[:cart] = Hash.new(0) if session[:cart].nil?
   end
 end

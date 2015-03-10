@@ -1,7 +1,7 @@
 Entv::Application.routes.draw do
   root "static#index"
   resources :products
-  resources :order_items, only: [:create, :show]
+  resources :order_items, only: [:create, :destroy, :index]
   get "about" => "static#about", as: :about
   get "contact" => "static#contact", as: :contact
 

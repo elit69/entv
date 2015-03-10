@@ -44,9 +44,10 @@
         </tr>     
       <%end%>     
     </table>
-    <ol class="breadcrumb">
-      <li class="active"><%= link_to("Add to Cart", order_items_path) %></li>
-    </ol> 
+    <%= form_tag order_items_path do %>
+      <%= hidden_field_tag :id, @product.id %>
+      <%= submit_tag "Add to Cart" %>
+    <% end %>
   </article>
 </div>
 

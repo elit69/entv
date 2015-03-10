@@ -49,21 +49,9 @@ spec = Spec.create!(cpu: "Intel Core i3-4030U 1.9GHz", ram: "4GB", vga: "Intel H
 spec.product = cate.products.create!(name: "E5-571", company: "Acer", price: 319, total: 23)
 spec.save
 
-cate = Category.find(2)
-spec = Spec.create!(cpu: "Intel Processor N2840 BF 2.58GHz", ram: "4GB", vga: "Intel HD Graphics", os: "Windows 8 Pro", storage: "500GB", screen_size: "14 Inches", battery:"6 cells")
-spec.product = cate.products.create!(name: "X453MA", company: "Asus", price: 305, total: 23)
-spec.save
-spec = Spec.create!(cpu: "Intel QuadCore N2940 BF 2.25GHz", ram: "8GB", vga: "NVIDIA GT 820M", os: "Windows 8 Pro", storage: "500GB", screen_size: "15.6 Inches", battery:"4 cells")
-spec.product = cate.products.create!(name: "K555LD", company: "Asus", price: 319, total: 23)
-spec.save
-spec = Spec.create!(cpu: "Intel QuadCore N2940 BF 2.25GHz", ram: "4GB", vga: "Intel HD Graphics", os: "Windows 8 Pro", storage: "500GB", screen_size: "14 Inches", battery:"4 cells")
-spec.product = cate.products.create!(name: "E5-411", company: "Acer", price: 319, total: 23)
-spec.save
-spec = Spec.create!(cpu: "Intel Core i3-4030U 1.9GHz", ram: "4GB", vga: "Intel HD Graphics 4400", os: "Windows 8 Pro", storage: "500GB", screen_size: "15.6 Inches", battery:"3 cells")
-spec.product = cate.products.create!(name: "E5-571", company: "Acer", price: 319, total: 23)
-spec.save
-
 cate = Category.find(3)
 cate.products.create!(name: "Beat Headset",	company: "Beat Audio",	price: 150,	total: 20)
 cate.products.create!(name: "Beat Headset big",	company: "Beat Audio",	price: 200,	total: 60)
 cate.products.create!(name: "Sony X factor", company: "Sony",  price: 200, total: 60)
+
+Admin.create!(username: "elit", email: "chhornelit@gmail.com", password:"12345678", password_confirmation: "12345678")
