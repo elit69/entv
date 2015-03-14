@@ -44,7 +44,7 @@
         </tr>     
       <%end%>     
     </table>
-    <%= form_tag order_items_path do %>
+    <%= form_tag (order_items_path, method: :delete ) do %>
       <%= hidden_field_tag :id, @product.id %>
       <%= submit_tag "Add to Cart" %>
     <% end %>

@@ -25,6 +25,7 @@
   <ul class="nav navbar-nav pull-right">
     <% if user_signed_in? %>
       <li><%= link_to "Hi, #{current_user.username}", profile_path %></li>
+      <li><%= link_to "Cart", order_items_path %></li>
       <li><%= link_to "Sign Out", sign_out_path %></li>
     <% elsif admin_signed_in? %>
       <li><%= link_to "Admin, #{current_admin.username}", "" %></li>
