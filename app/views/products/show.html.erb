@@ -1,0 +1,53 @@
+<div class="form-wrapper product">
+  <article id="product">
+    <header>
+      <h2 id="name"><%= @product.name %></h2>
+    </header>
+    <h4><strong>Category</strong></h4>
+    <p><%= @product.category.name %></p>
+    <h4><strong>Company</strong></h4>
+    <p><%= @product.company %></p>
+    <h4><strong>Price</strong></h4>
+    <p><%= number_to_currency(@product.price) %></p>
+    <h4><strong>Quantity</strong></h4>
+    <p><%= format_in_stock(@product) %></p>
+    <table>
+      <%if @s != nil %>
+        <h4><strong>Details</strong></h4>
+        <tr>
+          <th>Size:</th>
+          <td><%= @s.screen_size %></td>
+        </tr>
+        <tr>
+          <th>OS:</th>
+          <td><%= @s.os %></td>
+        </tr>
+        <tr>
+          <th>CPU:</th>
+          <td><%= @s.cpu %></td>
+        </tr>
+        <tr>
+          <th>RAM:</th>
+          <td><%= @s.ram %></td>
+        </tr>
+        <tr>
+          <th>VGA:</th>
+          <td><%= @s.vga %></td>
+        </tr>   
+        <tr>
+          <th>Storage:</th>
+          <td><%= @s.storage %></td>
+        </tr>
+        <tr>
+          <th>Battery:</th>
+          <td><%= @s.battery %></td>
+        </tr>     
+      <%end%>     
+    </table>
+    <%= form_tag (order_items_path, method: :delete ) do %>
+      <%= hidden_field_tag :id, @product.id %>
+      <%= submit_tag "Add to Cart" %>
+    <% end %>
+  </article>
+</div>
+

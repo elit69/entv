@@ -1,0 +1,23 @@
+<div class="form-wrapper">
+  <h2>Your Cart</h2><br />
+  <table class="table table-condensed table-bordered"> 
+    <% if !@cart.nil? %>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>More</th>
+      </tr>
+      <% @cart.each do |k,v|%>
+      <tr>
+        <td><%= Product.find(k).name %></td>
+        <td><%= Product.find(k).price %></td>
+        <td><%=v%></td>
+        <td>    
+          <%= link_to("Destroy", order_items_path, method: :delete) %>
+        </td>
+      </tr>
+      <%end%>
+    <%end%>
+  </table>
+</div>
