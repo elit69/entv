@@ -3,7 +3,7 @@ module ProductsHelper
     if product.total.nil? || product.total.zero?
       "Out of Stock"
     else
-      product.total.to_s + " In Stock"
+      pluralize(product.total, "Item") + " In Stock"      
     end
   end
 end
