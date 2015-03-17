@@ -1,3 +1,5 @@
+<% provide :title, "Order items" %>
+
 <div class="col-sm-8 col-sm-offset-2 form-wrapper">
   <% if !@cart.count.zero? %>  
   <%= form_tag(delete_order_item_path, method: :delete) do %>

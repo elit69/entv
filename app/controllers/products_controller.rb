@@ -1,10 +1,12 @@
 class ProductsController < ApplicationController
   def index
-    if params[:company].nil? || params[:category_id].nil?
-      @products = Product.where(company: params[:company])
-    else
+    if params[:category_id].blank? && params[:company].blank?
+      @products = Product.all
+    elsif params[:category_id]
       category = Category.find params[:category_id]
       @products = category.products.where "company LIKE ?", "#{params[:company]}%"
+    else
+      @products = Product.where(company: params[:company])
     end
   end
   
