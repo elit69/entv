@@ -15,21 +15,17 @@ class OrderItemsController < ApplicationController
   end
   def index
     @cart = session[:cart]   
-    if @cart.nil? 
-      flash.now[:danger] = "Your cart is empty. Please add something." 
-    end
   end
   def destroy
     if params[:commit] == "Remove"
       session[:cart].delete params[:id].to_i
-      if session[:cart].nil?
-        flash.now[:danger] = "Your cart is empty. Please add something." 
-      else
-        flash[:success] = "Deleted Successfully." 
-      end  
+      flash[:success] = "Deleted Successfully." 
       @cart = session[:cart]   
-      render :index
+      redirect_to order_items_path
     else
+      product_id = session[:cart].keys
+      product_unit = params[:product_unit]
+      session[:cart] = Hash[product_id.zip product_unit]
       redirect_to new_order_path
     end
   end

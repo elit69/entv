@@ -1,7 +1,7 @@
 <div class="col-sm-8 col-sm-offset-2 form-wrapper">
-  <h2>Your Cart</h2><br />
+  <% if !@cart.count.zero? %>  
   <%= form_tag(delete_order_item_path, method: :delete) do %>
-  <% if !@cart.nil? %>  
+    <h2>Your Shopping Cart</h2><br />
     <table class="table table-condensed table-bordered">     
       <tr>
         <th>Model</th>
@@ -14,7 +14,7 @@
           <%p=Product.find(k)%>
           <td><%= link_to p.name, product_path(k) %></td>
           <td><%= number_to_currency(p.price) %></td>
-          <td><%= number_field_tag :product_unit, nil, value: v, in: 1..p.total %></td>
+          <td><%= number_field_tag "product_unit[]", nil, value: v, in: 1..p.total %></td>
           <td>    
             <%= form_tag(delete_order_item_path, method: :delete, data: { confirm: 'Are you sure?' }) do %>
               <%= hidden_field_tag :id, k %>
@@ -24,12 +24,14 @@
         </tr>
       <%end%>
     </table>
-    <%end%>  
     <ol class="breadcrumb">
       <li><%= link_to "Back", root_path %></li>
       <li class="active">      
         <%= submit_tag "Checkout" %>
       </li>
     </ol>  
-  <% end %>
+    <%end%>  
+  <%else%>
+    <%flash.now[:danger] = "Your cart is empty. Please add something." %>
+  <%end%>
 </div>

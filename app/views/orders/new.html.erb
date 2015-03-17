@@ -13,7 +13,7 @@
     </div>
     <div class="form-group">
       <%=f.label :order_type %>
-      <%=f.text_field :order_type, class: "form-control" %>
+      <%=f.text_field :order_type, class: "form-control", value: "Pay on delivery" %>
     </div>
     <div class="form-group">
       <table class="table table-condensed table-bordered">     
@@ -26,7 +26,7 @@
         <% @cart.each do |k,v|%>
           <tr>
             <%p1=Product.find(k)%>
-            <% total += (v * p1.price) %>
+            <% total += (v.to_i * p1.price) %>
             <td><%= link_to p1.name, product_path(k) %></td>
             <td><%= number_to_currency(p1.price) %></td>
             <td><%=v%></td>  
