@@ -1,5 +1,9 @@
 <div class="form-wrapper product">
-  <h2><%= @products[0].company %></h2>
+  <% unless @products.blank? %>
+    <h2><%= @products[0].company %></h2>
+  <% else %>
+    <h2>No result was found!</h2>
+  <% end %>
 </div>
 <ul id="index">
   <% @products.each do |p| %>
@@ -7,4 +11,4 @@
     <h4><%=pluralize(p.total, "Item")%> in Stock</h4>
     <h4><%= number_to_currency(p.price)%> each</h4>
   <% end %>
-</ul>  
+</ul> 
