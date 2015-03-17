@@ -1,0 +1,48 @@
+<div class="col-sm-8 col-sm-offset-2 form-wrapper">
+  <h2>Ordering</h2>
+
+  <ol class="breadcrumb">
+    <li><%= link_to "Back", order_items_path, class: 'button' %></li>
+    <li class="active"><%= "Order" %></li>
+  </ol>  
+
+  <%=form_for(@order) do |f| %>
+    <div class="form-group">
+      <%=f.label :order_address %>
+      <%=f.text_field :order_address, autofocus: true, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%=f.label :order_type %>
+      <%=f.text_field :order_type, class: "form-control", value: "Pay on delivery" %>
+    </div>
+    <div class="form-group">
+      <table class="table table-condensed table-bordered">     
+        <tr>
+          <th>Model</th>
+          <th>Price</th>
+          <th>Units</th> 
+        </tr>
+        <%total = 0%>
+        <% @cart.each do |k,v|%>
+          <tr>
+            <%p1=Product.find(k)%>
+            <% total += (v.to_i * p1.price) %>
+            <td><%= link_to p1.name, product_path(k) %></td>
+            <td><%= number_to_currency(p1.price) %></td>
+            <td><%=v%></td>  
+          </tr>
+        <%end%>
+      </table>
+      <table>
+         <tr>
+          <th>Total: </th>
+          <td><%=number_to_currency(total)%></td>
+          <%@order.total = total%>
+        </tr>
+      </table>        
+    </div>
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary form-control" %>
+    </div>  
+  <%end%>
+</div>

@@ -1,0 +1,19 @@
+<div class="col-sm-8 col-sm-offset-2 form-wrapper">
+  <h2>All Order</h2>
+    <table class="table table-condensed table-bordered">     
+      <tr>
+        <th>Order Date</th>
+        <th>Order Type</th>
+        <th>Status</th>
+        <th>Total</th>            
+      </tr>
+      <%@orders.each do |o|%>
+        <tr>
+          <td><%=o.created_at.to_date%></td>
+          <td><%=o.order_type%></td>
+          <td><%=o.status%></td>
+          <td><%=number_to_currency(o.total)%></td>
+        </tr>
+      <%end%>
+    </table>  
+</div>

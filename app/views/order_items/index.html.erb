@@ -1,23 +1,37 @@
-<div class="form-wrapper">
-  <h2>Your Cart</h2><br />
-  <table class="table table-condensed table-bordered"> 
-    <% if !@cart.nil? %>
+<div class="col-sm-8 col-sm-offset-2 form-wrapper">
+  <% if !@cart.count.zero? %>  
+  <%= form_tag(delete_order_item_path, method: :delete) do %>
+    <h2>Your Shopping Cart</h2><br />
+    <table class="table table-condensed table-bordered">     
       <tr>
-        <th>Name</th>
+        <th>Model</th>
         <th>Price</th>
-        <th>Quantity</th>
-        <th>More</th>
+        <th>Units</th>
+        <th>Other</th>
       </tr>
       <% @cart.each do |k,v|%>
-      <tr>
-        <td><%= Product.find(k).name %></td>
-        <td><%= Product.find(k).price %></td>
-        <td><%=v%></td>
-        <td>    
-          <%= link_to("Destroy", order_items_path, method: :delete) %>
-        </td>
-      </tr>
+        <tr>
+          <%p=Product.find(k)%>
+          <td><%= link_to p.name, product_path(k) %></td>
+          <td><%= number_to_currency(p.price) %></td>
+          <td><%= number_field_tag "product_unit[]", nil, value: v, in: 1..p.total %></td>
+          <td>    
+            <%= form_tag(delete_order_item_path, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+              <%= hidden_field_tag :id, k %>
+              <%= submit_tag "Remove", commit: "Remove" %>
+            <% end %>
+          </td>
+        </tr>
       <%end%>
-    <%end%>
-  </table>
+    </table>
+    <ol class="breadcrumb">
+      <li><%= link_to "Back", root_path %></li>
+      <li class="active">      
+        <%= submit_tag "Checkout" %>
+      </li>
+    </ol>  
+    <%end%>  
+  <%else%>
+    <%flash.now[:danger] = "Your cart is empty. Please add something." %>
+  <%end%>
 </div>

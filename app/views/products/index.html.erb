@@ -5,10 +5,15 @@
     <h2>No result was found!</h2>
   <% end %>
 </div>
-<ul id="index">
+  <ul id="index">
   <% @products.each do |p| %>
+    <%= image_tag p.picture_url(:small_thumb) %>
     <h3><%= link_to(p.name, product_path(p)) %></h3>
-    <h4><%=pluralize(p.total, "Item")%> in Stock</h4>
+    <h4><%= format_in_stock(p)%></h4>
     <h4><%= number_to_currency(p.price)%> each</h4>
+    <br />
   <% end %>
-</ul> 
+</ul>  
+</div>
+
+
