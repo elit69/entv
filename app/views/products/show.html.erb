@@ -45,11 +45,13 @@
         </tr>     
       <%end%>     
     </table>    
-    <%= form_tag order_items_path do %>
-      <%= link_to "Back", products_path+"?company="+@product.company %>
+    <%= form_tag order_items_path do %>        
       <%= hidden_field_tag :id, @product.id %>
-      <%= submit_tag "Add to Cart" %>
-    <% end %>    
+      <ol class="breadcrumb">
+        <li><%= link_to "Back", products_path+"?company="+@product.company %></li>       
+        <li class="active"><%= submit_tag "Add to Cart" %></li>
+      </ol>
+    <% end %>     
   </article>
 </div>
 

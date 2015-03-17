@@ -1,27 +1,35 @@
-<div class="form-wrapper">
+<div class="col-sm-8 col-sm-offset-2 form-wrapper">
   <h2>Your Cart</h2><br />
-  <% if !@cart.nil? %>
-  <table class="table table-condensed table-bordered">     
-    <tr>
-      <th>Model</th>
-      <th>Price</th>
-<!--  <th>Quantity</th>  -->
-      <th>Delete</th>
-    </tr>
-    <% @cart.each do |k,v|%>
+  <%= form_tag(delete_order_item_path, method: :delete) do %>
+  <% if !@cart.nil? %>  
+    <table class="table table-condensed table-bordered">     
       <tr>
-        <td><%= Product.find(k).name %></td>
-        <td><%= number_to_currency(Product.find(k).price) %></td>
-<!--    <td><%=v%></td>   -->
-        <td>    
-          <%= form_tag(delete_order_item_path, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-            <%= hidden_field_tag :id, k %>
-            <%= submit_tag "Delete" %>
-          <% end %>
-        </td>
+        <th>Model</th>
+        <th>Price</th>
+        <th>Units</th>
+        <th>Other</th>
       </tr>
-    <%end%>
-  </table>
-  <%end%>
-  <%=link_to("Check Out", '/checkout')%>
+      <% @cart.each do |k,v|%>
+        <tr>
+          <%p=Product.find(k)%>
+          <td><%= link_to p.name, product_path(k) %></td>
+          <td><%= number_to_currency(p.price) %></td>
+          <td><%= number_field_tag :product_unit, nil, value: v, in: 1..p.total %></td>
+          <td>    
+            <%= form_tag(delete_order_item_path, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+              <%= hidden_field_tag :id, k %>
+              <%= submit_tag "Remove", commit: "Remove" %>
+            <% end %>
+          </td>
+        </tr>
+      <%end%>
+    </table>
+    <%end%>  
+    <ol class="breadcrumb">
+      <li><%= link_to "Back", root_path %></li>
+      <li class="active">      
+        <%= submit_tag "Checkout" %>
+      </li>
+    </ol>  
+  <% end %>
 </div>
