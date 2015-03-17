@@ -2,7 +2,7 @@ Entv::Application.routes.draw do
   root "static#index"
   resources :products, only: [:show, :index]
   resources :order_items, only: [:create, :index]
-  resources :orders, only: [:create, :index, :new, :show]
+  resources :orders, only: [:create, :index, :new]
   delete 'order_items' => 'order_items#destroy', as: :delete_order_item
   patch 'order_items' => 'order_items#update', as: :update_order_item
   get "about" => "static#about", as: :about
