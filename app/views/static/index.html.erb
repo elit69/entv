@@ -8,9 +8,33 @@
   });
 </script>
 
-<ul class="bxslider">
+<ul id="slider" class="bxslider">
   <li><%= image_tag "slider/slide1.jpg" %></li>
-  <li><%= image_tag "slider/slide2.jpg" %></li>
+  <li><%= image_tag "slider/slide2.png" %></li>
   <li><%= image_tag "slider/slide3.jpg" %></li>
-  <li><%= image_tag "slider/slide4.jpg" %></li>
+  <li><%= image_tag "slider/slide4.png" %></li>
+  <li><%= image_tag "slider/slide5.png" %></li>
+  <li><%= image_tag "slider/slide6.png" %></li>
 </ul>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">New Products</div>
+  <div class="panel-body">
+    <table class="table">
+      <% @products.in_groups_of 5, false do |rows| %>
+        <tr>
+          <% rows.each do |product| %>
+            <td>
+              <div class="product-thumbnail">
+                <%= link_to product do %>
+                  <p><%= "#{product.name} | #{number_to_currency product.price}" %></p>
+                  <%= image_tag product.picture_url(:small_thumb), class: "thumbnail" %>
+                <% end %>
+              </div>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
