@@ -55,3 +55,4 @@ cate.products.create!(name: "Beat Headset big",	company: "Beat Audio",	price: 20
 cate.products.create!(name: "Sony X factor", company: "Sony",  price: 200, total: 60)
 
 Admin.create!(username: "elit", email: "chhornelit@gmail.com", password:"12345678", password_confirmation: "12345678")
+User.create!(username: "elit", email: "chhornelit@gmail.com", password:"12345678", password_confirmation: "12345678", confirmed_at: Time.now)
