@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
   end
+  //dfsdf
   private
     def order_params
       params.require(:order).permit(:order_address, :order_type, :total)
